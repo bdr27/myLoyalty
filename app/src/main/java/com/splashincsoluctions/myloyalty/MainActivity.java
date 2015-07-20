@@ -3,17 +3,30 @@ package com.splashincsoluctions.myloyalty;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.Writer;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.oned.Code128Writer;
+import com.google.zxing.oned.EAN13Writer;
+
+import java.util.Map;
 
 public class MainActivity extends Activity implements View.OnClickListener
 {
@@ -35,6 +48,26 @@ public class MainActivity extends Activity implements View.OnClickListener
             String scanFormat = scanningResult.getFormatName();
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + scanContent);
+            Bitmap mBitmap = null;
+            ImageView mImageView = new ImageView(this);
+
+            com.google.zxing.Writer c9 = new EAN13Writer();
+            try{
+                BitMatrix bm = c9.encode(scanContent, BarcodeFormat.EAN_13, 600, 300);
+                mBitmap = Bitmap.createBitmap(600, 300, Bitmap.Config.ARGB_8888);
+                for(int i = 0; i < 600; i++){
+                    for(int j = 0; j < 300; j++){
+                        mBitmap.setPixel(i, j, bm.get(i,j) ? Color.BLACK : Color.WHITE);
+                    }
+                }
+            }
+            catch (WriterException e){
+                e.printStackTrace();
+            }
+
+            if (mBitmap != null) {
+                mImageView.setImageBitmap(mBitmap);
+            }
         } else{
             Toast toast = Toast.makeText(getApplicationContext(), "No Can data recieved!", Toast.LENGTH_SHORT);
             toast.show();
