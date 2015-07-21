@@ -24,6 +24,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code128Writer;
+import com.google.zxing.oned.Code39Writer;
 import com.google.zxing.oned.EAN13Writer;
 
 import java.util.Map;
@@ -32,6 +33,7 @@ public class MainActivity extends Activity implements View.OnClickListener
 {
     private Button scanBtn;
     private TextView formatTxt, contentTxt;
+    private ImageView mImageView;
 
     @Override
     public void onClick(View v){
@@ -49,11 +51,10 @@ public class MainActivity extends Activity implements View.OnClickListener
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + scanContent);
             Bitmap mBitmap = null;
-            ImageView mImageView = new ImageView(this);
 
-            com.google.zxing.Writer c9 = new EAN13Writer();
+            com.google.zxing.Writer c9 = new Code39Writer();
             try{
-                BitMatrix bm = c9.encode(scanContent, BarcodeFormat.EAN_13, 600, 300);
+                BitMatrix bm = c9.encode(scanContent, BarcodeFormat.CODE_39, 600, 300);
                 mBitmap = Bitmap.createBitmap(600, 300, Bitmap.Config.ARGB_8888);
                 for(int i = 0; i < 600; i++){
                     for(int j = 0; j < 300; j++){
@@ -81,6 +82,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         scanBtn = (Button)findViewById(R.id.scan_button);
         formatTxt = (TextView)findViewById(R.id.scan_format);
         contentTxt = (TextView)findViewById(R.id.scan_content);
+        mImageView = (ImageView)findViewById(R.id.imageView);
         scanBtn.setOnClickListener(this);
     }
 
