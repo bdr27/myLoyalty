@@ -26,6 +26,9 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code128Writer;
 import com.google.zxing.oned.Code39Writer;
 import com.google.zxing.oned.EAN13Writer;
+import com.splashincsoluctions.myloyalty.BarcodeGenerator.ABarcode;
+import com.splashincsoluctions.myloyalty.BarcodeGenerator.BarcodeHelper;
+import com.splashincsoluctions.myloyalty.BarcodeGenerator.C39Barcode;
 
 import java.util.Map;
 
@@ -50,25 +53,22 @@ public class MainActivity extends Activity implements View.OnClickListener
             String scanFormat = scanningResult.getFormatName();
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + scanContent);
-            Bitmap mBitmap = null;
-
-            com.google.zxing.Writer c9 = new Code39Writer();
-            try{
-                BitMatrix bm = c9.encode(scanContent, BarcodeFormat.CODE_39, 600, 300);
-                mBitmap = Bitmap.createBitmap(600, 300, Bitmap.Config.ARGB_8888);
-                for(int i = 0; i < 600; i++){
-                    for(int j = 0; j < 300; j++){
-                        mBitmap.setPixel(i, j, bm.get(i,j) ? Color.BLACK : Color.WHITE);
-                    }
+            ABarcode bc = BarcodeHelper.GetBarcode(scanFormat, scanContent);
+            Bitmap bitmap = null;
+            try {
+                if (bc != null) {
+                    bitmap = bc.GetBarcode(1080, 600);
                 }
-            }
-            catch (WriterException e){
-                e.printStackTrace();
+                if (bitmap != null) {
+                    mImageView.setImageBitmap(bitmap);
+                }
+            }catch(Exception ex){
+                ex.printStackTrace();
+                Toast toast = Toast.makeText(getApplicationContext(), "An unexpected error occured", Toast.LENGTH_SHORT);
+                toast.show();
             }
 
-            if (mBitmap != null) {
-                mImageView.setImageBitmap(mBitmap);
-            }
+
         } else{
             Toast toast = Toast.makeText(getApplicationContext(), "No Can data recieved!", Toast.LENGTH_SHORT);
             toast.show();
