@@ -20,9 +20,9 @@ public class BarcodeHelper {
             case "CODABAR":
                 bc = new CodabarBarcode(content);
                 break;
-            case "DATA_MATRIX":
+            /*case "DATA_MATRIX":
                 bc = new DataMatrixBarcode(content);
-                break;
+                break;*/
             case "EAN_8":
                 bc = new Ean8Barcode(content);
                 break;
@@ -31,6 +31,9 @@ public class BarcodeHelper {
                 break;
             case "ITF":
                 bc = new ITFBarcode(content);
+                break;
+            case "PDF_417":
+                bc = new PDF417Barcode(content);
                 break;
             case "QR_CODE":
                 bc = new QRBarcode(content);
