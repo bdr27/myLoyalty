@@ -8,6 +8,9 @@ public class BarcodeHelper {
     {
         ABarcode bc = null;
         switch (format.toUpperCase()){
+            case "AZTEC":
+                bc = new AztecBarcode(content);
+                break;
             case "CODE_39":
                 bc = new C39Barcode(content);
                 break;
@@ -17,14 +20,21 @@ public class BarcodeHelper {
             case "CODABAR":
                 bc = new CodabarBarcode(content);
                 break;
-            case "ITF":
-                bc = new ITFBarcode(content);
+            case "DATA_MATRIX":
+                bc = new DataMatrixBarcode(content);
                 break;
             case "EAN_8":
                 bc = new Ean8Barcode(content);
                 break;
             case "EAN_13":
                 bc = new Ean13Barcode(content);
+                break;
+            case "ITF":
+                bc = new ITFBarcode(content);
+                break;
+            case "QR_CODE":
+                bc = new QRBarcode(content);
+                break;
         }
         return bc;
     }

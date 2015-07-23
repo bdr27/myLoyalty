@@ -3,30 +3,28 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.oned.ITFWriter;
+import com.google.zxing.datamatrix.DataMatrixWriter;
 
 /**
- * Created by Brendan on 22/07/2015.
+ * Created by Brendan on 23/07/2015.
  */
-public class ITFBarcode extends ABarcode {
-    public ITFBarcode(String content){
+public class DataMatrixBarcode extends ABarcode {
+    public DataMatrixBarcode(String content) {
         super(content);
     }
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        ITFWriter writer = new ITFWriter();
+        DataMatrixWriter writer = new DataMatrixWriter();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
-            bm = writer.encode(content, BarcodeFormat.ITF, width, height);
-        } catch (WriterException e) {
-            e.printStackTrace();
+            bm = writer.encode(content, BarcodeFormat.DATA_MATRIX, width, height);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-
-        if(bm != null) {
+        if (bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
         return bitmap;
