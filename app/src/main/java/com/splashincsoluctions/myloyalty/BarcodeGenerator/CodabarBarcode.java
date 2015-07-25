@@ -15,20 +15,7 @@ public class CodabarBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        /*CodaBarWriter writer = new CodaBarWriter();
-        BitMatrix bm = null;
-        Bitmap bitmap = null;
-        try {
-            bm = writer.encode(content, BarcodeFormat.CODABAR, width, height);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
-        if(bm != null) {
-            bitmap = ProduceBarcode(bm, width, height);
-        }
-        return bitmap;*/
-        return ProduceBarcode(new CodaBarWriter(), BarcodeFormat.CODABAR, width, height);
+        return ZXingProduceBarcode(new CodaBarWriter(), BarcodeFormat.CODABAR, width, height);
     }
 
 

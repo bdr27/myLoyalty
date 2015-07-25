@@ -16,20 +16,6 @@ public class QRBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        /*QRCodeWriter writer = new QRCodeWriter();
-        BitMatrix bm = null;
-        Bitmap bitmap = null;
-        try {
-            bm = writer.encode(content, BarcodeFormat.QR_CODE, width, height);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
-        if (bm != null) {
-            bitmap = ProduceBarcode(bm, width, height);
-        }
-        return bitmap;*/
-
-        return ProduceBarcode(new QRCodeWriter(), BarcodeFormat.QR_CODE, width, height);
+        return ZXingProduceBarcode(new QRCodeWriter(), BarcodeFormat.QR_CODE, width, height);
     }
 }

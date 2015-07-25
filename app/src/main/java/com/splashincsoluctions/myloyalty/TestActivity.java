@@ -1,11 +1,8 @@
 package com.splashincsoluctions.myloyalty;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,24 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.zxing.Writer;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.oned.Code128Writer;
-import com.google.zxing.oned.Code39Writer;
-import com.google.zxing.oned.EAN13Writer;
 import com.splashincsoluctions.myloyalty.BarcodeGenerator.ABarcode;
 import com.splashincsoluctions.myloyalty.BarcodeGenerator.BarcodeHelper;
-import com.splashincsoluctions.myloyalty.BarcodeGenerator.C39Barcode;
 
-import java.util.Map;
-
-public class MainActivity extends Activity implements View.OnClickListener
+public class TestActivity extends Activity implements View.OnClickListener
 {
     private Button scanBtn;
     private TextView formatTxt, contentTxt;

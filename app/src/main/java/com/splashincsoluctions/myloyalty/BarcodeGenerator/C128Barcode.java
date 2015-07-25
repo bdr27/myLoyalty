@@ -26,10 +26,10 @@ public class C128Barcode extends ABarcode {
         }
 
         if(bm != null) {
-            bitmap = ProduceBarcode(bm, width, height);
+            bitmap = ZXingProduceBarcode(bm, width, height);
         }
         return bitmap;*/
 
-        return ProduceBarcode(new Code128Writer(), BarcodeFormat.CODE_128, width, height);
+        return ZXingProduceBarcode(new Code128Writer(), BarcodeFormat.CODE_128, width, height);
     }
 }

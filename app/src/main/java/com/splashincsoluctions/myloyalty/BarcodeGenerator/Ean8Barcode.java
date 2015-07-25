@@ -15,20 +15,6 @@ public class Ean8Barcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        /*EAN8Writer writer = new EAN8Writer();
-        BitMatrix bm = null;
-        Bitmap bitmap = null;
-        try {
-            bm = writer.encode(content, BarcodeFormat.EAN_8, width, height);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
-        if(bm != null) {
-            bitmap = ProduceBarcode(bm, width, height);
-        }
-        return bitmap;*/
-
-        return ProduceBarcode(new EAN8Writer(), BarcodeFormat.EAN_8, width, height);
+        return ZXingProduceBarcode(new EAN8Writer(), BarcodeFormat.EAN_8, width, height);
     }
 }

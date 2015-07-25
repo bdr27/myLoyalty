@@ -11,7 +11,7 @@ import com.google.zxing.common.BitMatrix;
  * Created by Brendan on 22/07/2015.
  */
 public abstract class ABarcode {
-    protected String content;
+    private String content;
 
     public ABarcode(String content){
         this.content = content;
@@ -19,7 +19,7 @@ public abstract class ABarcode {
 
     public abstract Bitmap GetBarcode(int width, int height);
 
-    protected Bitmap ProduceBarcode(Writer writer, BarcodeFormat barcodeFormat, int width, int height) {
+    protected Bitmap ZXingProduceBarcode(Writer writer, BarcodeFormat barcodeFormat, int width, int height) {
         Bitmap mBitmap = null;
         BitMatrix bm = null;
 

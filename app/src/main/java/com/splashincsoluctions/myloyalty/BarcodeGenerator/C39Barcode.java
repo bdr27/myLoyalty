@@ -16,19 +16,6 @@ public class C39Barcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height){
-        /*Code39Writer writer = new Code39Writer();
-        BitMatrix bm = null;
-        Bitmap bitmap = null;
-        try {
-            bm = writer.encode(content, BarcodeFormat.CODE_39, width, height);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
-        if(bm != null) {
-            bitmap = ProduceBarcode(bm, width, height);
-        }
-        return bitmap;*/
-        return ProduceBarcode(new Code39Writer(), BarcodeFormat.CODE_39, width, height);
+        return ZXingProduceBarcode(new Code39Writer(), BarcodeFormat.CODE_39, width, height);
     }
 }

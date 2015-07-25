@@ -16,6 +16,6 @@ public class AztecBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        return ProduceBarcode(new AztecWriter(), BarcodeFormat.AZTEC, width, height);
+        return ZXingProduceBarcode(new AztecWriter(), BarcodeFormat.AZTEC, width, height);
     }
 }

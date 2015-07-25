@@ -15,20 +15,6 @@ public class PDF417Barcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        /*PDF417Writer writer = new PDF417Writer();
-        BitMatrix bm = null;
-        Bitmap bitmap = null;
-        try {
-            bm = writer.encode(content, BarcodeFormat.PDF_417, width, height);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
-        if (bm != null) {
-            bitmap = ProduceBarcode(bm, width, height);
-        }
-        return bitmap;*/
-
-        return ProduceBarcode(new PDF417Writer(), BarcodeFormat.PDF_417, width, height);
+        return ZXingProduceBarcode(new PDF417Writer(), BarcodeFormat.PDF_417, width, height);
     }
 }

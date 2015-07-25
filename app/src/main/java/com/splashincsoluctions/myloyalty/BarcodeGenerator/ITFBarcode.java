@@ -15,20 +15,6 @@ public class ITFBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        /*ITFWriter writer = new ITFWriter();
-        BitMatrix bm = null;
-        Bitmap bitmap = null;
-        try {
-            bm = writer.encode(content, BarcodeFormat.ITF, width, height);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
-        if(bm != null) {
-            bitmap = ProduceBarcode(bm, width, height);
-        }
-        return bitmap;*/
-
-        return ProduceBarcode(new ITFWriter(), BarcodeFormat.ITF, width, height);
+        return ZXingProduceBarcode(new ITFWriter(), BarcodeFormat.ITF, width, height);
     }
 }
