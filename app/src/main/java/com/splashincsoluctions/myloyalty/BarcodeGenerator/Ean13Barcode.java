@@ -3,10 +3,7 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.EAN13Writer;
-import com.google.zxing.oned.EAN8Writer;
 
 /**
  * Created by Brendan on 22/07/2015.
@@ -18,7 +15,7 @@ public class Ean13Barcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        EAN13Writer writer = new EAN13Writer();
+        /*EAN13Writer writer = new EAN13Writer();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -30,6 +27,8 @@ public class Ean13Barcode extends ABarcode {
         if(bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+
+        return ProduceBarcode(new EAN13Writer(), BarcodeFormat.EAN_13, width, height);
     }
 }

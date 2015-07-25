@@ -3,8 +3,6 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.ITFWriter;
 
 /**
@@ -17,7 +15,7 @@ public class ITFBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        ITFWriter writer = new ITFWriter();
+        /*ITFWriter writer = new ITFWriter();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -29,6 +27,8 @@ public class ITFBarcode extends ABarcode {
         if(bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+
+        return ProduceBarcode(new ITFWriter(), BarcodeFormat.ITF, width, height);
     }
 }

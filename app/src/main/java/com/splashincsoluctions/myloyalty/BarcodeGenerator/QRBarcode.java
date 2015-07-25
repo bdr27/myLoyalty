@@ -3,8 +3,6 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 /**
@@ -18,7 +16,7 @@ public class QRBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        QRCodeWriter writer = new QRCodeWriter();
+        /*QRCodeWriter writer = new QRCodeWriter();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -30,6 +28,8 @@ public class QRBarcode extends ABarcode {
         if (bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+
+        return ProduceBarcode(new QRCodeWriter(), BarcodeFormat.QR_CODE, width, height);
     }
 }

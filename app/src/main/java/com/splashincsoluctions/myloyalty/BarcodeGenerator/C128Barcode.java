@@ -3,10 +3,7 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code128Writer;
-import com.google.zxing.oned.Code39Writer;
 
 /**
  * Created by Brendan on 22/07/2015.
@@ -19,7 +16,7 @@ public class C128Barcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        Code128Writer writer = new Code128Writer();
+        /*Code128Writer writer = new Code128Writer();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -31,6 +28,8 @@ public class C128Barcode extends ABarcode {
         if(bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+
+        return ProduceBarcode(new Code128Writer(), BarcodeFormat.CODE_128, width, height);
     }
 }

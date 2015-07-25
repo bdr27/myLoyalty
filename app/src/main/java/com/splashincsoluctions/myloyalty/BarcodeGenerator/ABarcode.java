@@ -5,7 +5,6 @@ import android.graphics.Color;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Writer;
-import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 /**
@@ -20,9 +19,15 @@ public abstract class ABarcode {
 
     public abstract Bitmap GetBarcode(int width, int height);
 
-    protected Bitmap ProduceBarcode(BitMatrix bm, int width, int height) {
+    protected Bitmap ProduceBarcode(Writer writer, BarcodeFormat barcodeFormat, int width, int height) {
         Bitmap mBitmap = null;
+        BitMatrix bm = null;
 
+        try {
+            bm = writer.encode(content, barcodeFormat, width, height);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         if(bm != null){
             mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             for(int i = 0; i < width; i++){

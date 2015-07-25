@@ -3,8 +3,6 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.CodaBarWriter;
 
 /**
@@ -17,7 +15,7 @@ public class CodabarBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        CodaBarWriter writer = new CodaBarWriter();
+        /*CodaBarWriter writer = new CodaBarWriter();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -29,7 +27,8 @@ public class CodabarBarcode extends ABarcode {
         if(bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+        return ProduceBarcode(new CodaBarWriter(), BarcodeFormat.CODABAR, width, height);
     }
 
 

@@ -3,7 +3,6 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.datamatrix.DataMatrixWriter;
 
 /**
@@ -16,7 +15,7 @@ public class DataMatrixBarcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        DataMatrixWriter writer = new DataMatrixWriter();
+        /*DataMatrixWriter writer = new DataMatrixWriter();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -27,6 +26,7 @@ public class DataMatrixBarcode extends ABarcode {
         if (bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+        return ProduceBarcode(new DataMatrixWriter(), BarcodeFormat.DATA_MATRIX, width, height);
     }
 }

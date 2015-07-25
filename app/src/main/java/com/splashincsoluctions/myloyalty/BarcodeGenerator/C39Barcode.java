@@ -1,12 +1,8 @@
 package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.Writer;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code39Writer;
 
 /**
@@ -20,7 +16,7 @@ public class C39Barcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height){
-        Code39Writer writer = new Code39Writer();
+        /*Code39Writer writer = new Code39Writer();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -32,6 +28,7 @@ public class C39Barcode extends ABarcode {
         if(bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+        return ProduceBarcode(new Code39Writer(), BarcodeFormat.CODE_39, width, height);
     }
 }

@@ -3,8 +3,6 @@ package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 import android.graphics.Bitmap;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.pdf417.PDF417Writer;
 
 /**
@@ -17,7 +15,7 @@ public class PDF417Barcode extends ABarcode {
 
     @Override
     public Bitmap GetBarcode(int width, int height) {
-        PDF417Writer writer = new PDF417Writer();
+        /*PDF417Writer writer = new PDF417Writer();
         BitMatrix bm = null;
         Bitmap bitmap = null;
         try {
@@ -29,6 +27,8 @@ public class PDF417Barcode extends ABarcode {
         if (bm != null) {
             bitmap = ProduceBarcode(bm, width, height);
         }
-        return bitmap;
+        return bitmap;*/
+
+        return ProduceBarcode(new PDF417Writer(), BarcodeFormat.PDF_417, width, height);
     }
 }
