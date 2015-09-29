@@ -31,7 +31,11 @@ public class MainActivity extends ListActivity {
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, listItems);
         setListAdapter(adapter);
-        //adapter = new ArrayAdapter<String>(this, , listItems);
+        for(int i = 0; i < 5; i++)
+        {
+            listItems.add("Hello World: " + i);
+        }
+        adapter.notifyDataSetChanged();
     }
 
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
