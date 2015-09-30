@@ -1,4 +1,4 @@
-package com.splashincsoluctions.myloyalty.BarcodeGenerator;
+package com.splashincsoluctions.myloyalty.Barcode;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;

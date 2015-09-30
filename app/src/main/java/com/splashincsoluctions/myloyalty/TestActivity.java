@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.splashincsoluctions.myloyalty.BarcodeGenerator.ABarcode;
-import com.splashincsoluctions.myloyalty.BarcodeGenerator.BarcodeHelper;
+import com.splashincsoluctions.myloyalty.Barcode.ABarcode;
+import com.splashincsoluctions.myloyalty.Barcode.BarcodeHelper;
 
 public class TestActivity extends Activity implements View.OnClickListener
 {
