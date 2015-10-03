@@ -1,4 +1,4 @@
-package com.splashincsoluctions.myloyalty.Barcode;
+package com.splashincsoluctions.myloyalty.BarcodeGenerator;
 
 /**
  * Created by Brendan on 22/07/2015.
