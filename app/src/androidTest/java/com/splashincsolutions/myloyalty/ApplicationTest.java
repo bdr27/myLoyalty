@@ -1,4 +1,4 @@
-package com.splashincsoluctions.myloyalty;
+package com.splashincsolutions.myloyalty;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
