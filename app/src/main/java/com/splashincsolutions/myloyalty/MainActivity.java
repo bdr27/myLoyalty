@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.splashincsolutions.myloyalty.DTO.Establishment;
+import com.splashincsolutions.myloyalty.Database.DatabaseHandler;
+
 public class MainActivity extends AppCompatActivity {
 
     //Defining android ListView
@@ -25,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        DatabaseHandler dbh = new DatabaseHandler(this);
+        /*
+        Don't need to reset stuff yet
+        dbh.dbReset();
+        for(int i =0; i < testElements.length; i++){
+            dbh.addEstablishment(testElements[i]);
+        }*/
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         lvLoyaltyCards = (ListView) findViewById(R.id.loyaltyCardsList);
 
         //Declare Array adapter
-        ArrayAdapter<String> loyaltyCardAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, testElements);
+        ArrayAdapter<Establishment> loyaltyCardAdapter = new ArrayAdapter<Establishment>(this, android.R.layout.simple_list_item_1, dbh.getUserEstablishments());
 
         //Setting the android ListView's adapter to the newly created adapted
         lvLoyaltyCards.setAdapter(loyaltyCardAdapter);

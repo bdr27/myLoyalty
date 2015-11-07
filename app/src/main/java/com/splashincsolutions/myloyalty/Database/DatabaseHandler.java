@@ -2,10 +2,12 @@ package com.splashincsolutions.myloyalty.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.splashincsolutions.myloyalty.DTO.Establishment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,7 +42,14 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         db.execSQL(CREATE_ESTABLISHMENT_TABLE);
     }
 
+    public void dbReset()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        onUpgrade(db, 1, 1);
+    }
+
     public void addEstablishment(String establishmentName){
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(ESTABLISHMENT_NAME, establishmentName);
@@ -52,8 +61,21 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         return null;
     }
 
-    public List<Establishment> getAllEstablishments(){
-        return null;
+    public ArrayList<Establishment> getUserEstablishments(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + ESTABLISHMENT_KEY + "," + ESTABLISHMENT_NAME +
+                " FROM " + TABLE_ESTABLISHMENT + " ORDER BY " + ESTABLISHMENT_NAME;
+        Cursor resultSet = db.rawQuery(query, null);
+        ArrayList<Establishment> establishments = new ArrayList<Establishment>();
+        if(resultSet.moveToFirst()) {
+            do {
+                Establishment establishment = new Establishment(resultSet.getInt(0), resultSet.getString(1));
+                establishments.add(establishment);
+            } while (resultSet.moveToNext());
+        }
+        resultSet.close();
+        db.close();
+        return establishments;
     }
 
     @Override
