@@ -58,6 +58,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     }
 
     public Establishment getEstablishment(int ref){
+        SQLiteDatabase db = this.getReadableDatabase();
+        //Cursor cursor = db.query(TABLE_ESTABLISHMENT, new String[] {ESTABLISHMENT_KEY, ESTABLISHMENT_NAME}, ESTABLISHMENT_KEY + "=?", new String[], {String.valueOf(ref)}, null, null, null null)
         return null;
     }
 

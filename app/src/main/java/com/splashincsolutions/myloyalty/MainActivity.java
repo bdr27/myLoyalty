@@ -12,7 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.splashincsolutions.myloyalty.DTO.Establishment;
+import com.splashincsolutions.myloyalty.DTO.EstablishmentAdapter;
 import com.splashincsolutions.myloyalty.Database.DatabaseHandler;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Test elements
     String[] testElements = new String[]{"Hello", "World", "Review"};
+    private ArrayList<Establishment> testElements2 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         DatabaseHandler dbh = new DatabaseHandler(this);
+        testElements2.add(new Establishment(0, "test"));
+        testElements2.add(new Establishment(2, "Cool"));
         /*
         Don't need to reset stuff yet
         dbh.dbReset();
@@ -47,11 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         lvLoyaltyCards = (ListView) findViewById(R.id.loyaltyCardsList);
 
+        EstablishmentAdapter esd = new EstablishmentAdapter(this, R.layout.list_item, testElements2);
         //Declare Array adapter
         ArrayAdapter<Establishment> loyaltyCardAdapter = new ArrayAdapter<Establishment>(this, android.R.layout.simple_list_item_1, dbh.getUserEstablishments());
 
         //Setting the android ListView's adapter to the newly created adapted
-        lvLoyaltyCards.setAdapter(loyaltyCardAdapter);
+        //lvLoyaltyCards.setAdapter(loyaltyCardAdapter);
+        lvLoyaltyCards.setAdapter(esd);
     }
 
     @Override
